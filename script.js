@@ -117,24 +117,14 @@
 // ─────────────────────────────────────────────
 const cursorDot  = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
 
 document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorDot.style.left = mouseX + 'px';
-  cursorDot.style.top  = mouseY + 'px';
+  const x = e.clientX, y = e.clientY;
+  const dotOff  = 3;   // half of 6px dot
+  const ringOff = 16;  // half of 32px ring
+  cursorDot.style.transform  = `translate(${x - dotOff}px, ${y - dotOff}px)`;
+  cursorRing.style.transform = `translate(${x - ringOff}px, ${y - ringOff}px)`;
 });
-
-// Ring follows with lerp
-(function animateCursor() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top  = ringY + 'px';
-  requestAnimationFrame(animateCursor);
-})();
 
 // Hover state
 const hoverTargets = 'a, button, .btn-hero-primary, .btn-hero-ghost, .feature-card, .testimonial-card, .pricing-card, .built-for-item, .toggle-switch, .nav-link';

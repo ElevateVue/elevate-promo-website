@@ -88,32 +88,33 @@ footer.footer { background: rgba(11, 11, 26, 0.75) !important; }
 /* ── CUSTOM CURSOR ── */
 .cursor-dot {
   position: fixed;
-  width: 8px; height: 8px;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
   background: #fff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease;
-  mix-blend-mode: difference;
+  will-change: transform;
+  transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
 }
 .cursor-ring {
   position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(124,58,237,0.6);
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border: 1.5px solid rgba(124,58,237,0.7);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth),
-              border-color 0.3s ease, transform 0.08s linear;
+  will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 .cursor-ring.hovering {
-  width: 56px; height: 56px;
-  border-color: rgba(167,139,250,0.8);
+  width: 52px; height: 52px;
+  border-color: rgba(167,139,250,0.9);
 }
 .cursor-dot.clicking {
-  transform: translate(-50%, -50%) scale(0.6);
+  width: 4px; height: 4px;
+  opacity: 0.6;
 }
 
 /* ── CARD SPOTLIGHT ── */
